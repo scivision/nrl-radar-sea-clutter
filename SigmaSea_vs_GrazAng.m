@@ -10,7 +10,6 @@ clear all;
 close all;
 %DEFINE CONSTANTS
 c = 2.997924562e8; %Speed of Light
-dtor = pi/180;
 % Define INPUTS
 %Grazing angle (data available for 0.1 0.3 1.0 3.0 10.0 30.0 60.0)
 GrAng =[0.1 0.3 1.0 3.0 10.0 30.0 60.0];
@@ -21,7 +20,7 @@ NGrAng = length(GrAng);
 Freq_Nath = [0.5 1.25 3 5.6 9.3 17 35];
 NFreq = length(Freq_Nath);
 phi = 0; %Angle betwen boresight and upwind (deg), only affects GTRI model
-phi_rad = phi .* dtor;
+phi_rad = deg2rad(phi);
 % Just a dummy in this program
 ThWind = 0;
 % Grazing Angle axis for plotting empirical curves
@@ -36,7 +35,7 @@ ha=[];hl=[];hp=[];ht=[];htx=[];hty=[];
 set(0,'Units','pixels')
 % Set SCreen Size
 scnsize=get(0,'ScreenSize');
-pos1 = [5+scnsize(1),0.02*scnsize(4),.99*scnsize(3),.75*scnsize(4)];
+%pos1 = [5+scnsize(1),0.02*scnsize(4),.99*scnsize(3),.75*scnsize(4)];
 FigFont = 28;
 CircSize = 14;
 LineSize = 7;
@@ -208,7 +207,7 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
 
  hFig=figure(nFig-1); % Plot Hor Pol
 
- set(hFig,'Position',pos1);
+ %set(hFig,'Position',pos1);
 
  ht(end+1)=gca;
  ha(end+1)=gca;
@@ -236,6 +235,7 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
  for iAng = 1: length(GrAngPlot)
  SigZHor(iAng) = TSC_SigmaSea(Freq_Nath(iFreq),SeaState,Pol,GrAngPlot(iAng),ThWind);
  end
+   otherwise, error('invalid model')
  end
 
 % SigZHor = VGHSigmaSeaNew(Freq_Nath(iFreq),SeaState,Pol,GrAngPlot,ThWind);
@@ -273,19 +273,19 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
  hty(end+1) = ylabel('Reflectivity - \sigma_{HH}^0 (dB)');
 
  %set(ha,'YLim',[minyaxis maxyaxis],'XLim',[minxaxis maxxaxis]);
- set(ha,'FontWeight','Bold');
- set(ha,'FontSize',FigFont-2);
- set(ha,'FontName','Arial')
- set(htx,'FontSize',FigFont);
- set(htx,'FontName','Arial')
- set(htx,'FontWeight','Bold');
- set(hty,'FontSize',FigFont);
- set(hty,'FontName','Arial')
-
- set(hty,'FontWeight','Bold');
- set(hl,'LineWidth',LineSize);
- set(hp,'LineWidth',CircSize);
- set(ha,'LineWidth',AxWidth);
+%  set(ha,'FontWeight','Bold');
+%  set(ha,'FontSize',FigFont-2);
+%  set(ha,'FontName','Arial')
+%  set(htx,'FontSize',FigFont);
+%  set(htx,'FontName','Arial')
+%  set(htx,'FontWeight','Bold');
+%  set(hty,'FontSize',FigFont);
+%  set(hty,'FontName','Arial')
+%
+%  set(hty,'FontWeight','Bold');
+%  set(hl,'LineWidth',LineSize);
+%  set(hp,'LineWidth',CircSize);
+%  set(ha,'LineWidth',AxWidth);
  set(ha,'xtick',[0.1,.2,0.3,0.5,0.7,1.0,2.0,3.0,4.0,7.0,10.0,20.0,...
  30.0,50.0,70.,90.]);
  set(ha,'XLim',[0.1 90])
@@ -301,7 +301,7 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
 
  ht(end+1)=gca;
  ha(end+1)=gca;
- set(gcf,'Position',pos1);
+ %set(gcf,'Position',pos1);
  %set (ha(end),'PlotBoxAspectRatio',[1 .7 1])
 
  % Do all sea states for VV
@@ -331,7 +331,7 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
 
  NOWColorV=ColsMat(SeaSt+1,:);
 
- hl(end+1) = semilogx(GrAngPlot,SigmaVV,'LineWidth',7);
+ hl(end+1) = semilogx(GrAngPlot,SigmaVV); %'LineWidth',7);
  set(hl(end),'Color',ColsMat(SeaSt+1,:));
  hold on
  end
@@ -347,7 +347,7 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
 
  for ii=1:NGrAng
  if Measured_SigmaVV(SS_Plus1,iFreq,ii) ~= 0
- hp(end+1) = semilogx(GrAng(ii),Measured_SigmaVV(SS_Plus1,iFreq,ii),'o','LineWidth',CircSize);
+ hp(end+1) = semilogx(GrAng(ii),Measured_SigmaVV(SS_Plus1,iFreq,ii),'o'); %,'LineWidth',CircSize);
  %htemp=semilogx(Freq_Nath(ii),Measured_SigmaVV(SS_Plus1,ii),'-','LineWidth',1);
  set(hp(end),'Color',ColsMat(SeaSt+1,:));
  hold on
@@ -368,18 +368,18 @@ ColsMat = [ 0.161 0.698 0.725; % magenta
  grid on;
 
  %set(ha,'YLim',[minyaxis maxyaxis],'XLim',[minxaxis maxxaxis]);
- set(ha,'FontWeight','Bold');
- set(ha,'FontSize',FigFont-2);
- set(ha,'FontName','Arial')
- set(htx,'FontSize',FigFont);
- set(htx,'FontName','Arial')
- set(htx,'FontWeight','Bold');
- set(hty,'FontSize',FigFont);
- set(hty,'FontName','Arial')
- set(hty,'FontWeight','Bold');
- set(hl,'LineWidth',LineSize);
- set(hp,'LineWidth',CircSize);
- set(ha,'LineWidth',AxWidth);
+%  set(ha,'FontWeight','Bold');
+%  set(ha,'FontSize',FigFont-2);
+%  set(ha,'FontName','Arial')
+%  set(htx,'FontSize',FigFont);
+%  set(htx,'FontName','Arial')
+%  set(htx,'FontWeight','Bold');
+%  set(hty,'FontSize',FigFont);
+%  set(hty,'FontName','Arial')
+%  set(hty,'FontWeight','Bold');
+%  set(hl,'LineWidth',LineSize);
+%  set(hp,'LineWidth',CircSize);
+%  set(ha,'LineWidth',AxWidth);
  set(ha,'xtick',[0.1,.2,0.3,0.5,0.7,1.0,2.0,3.0,4.0,7.0,10.0,20.0,...
  30.0,50.0,70.,90.0]);
  set(ha,'XLim',[0.1 90])

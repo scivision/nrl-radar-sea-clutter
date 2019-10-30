@@ -29,8 +29,7 @@ end
 
 % Conversions
 
-DtoR = pi()/180;
-GrazAng = Psi*DtoR;
+GrazAng = deg2rad(Psi);
 
 SeaState = SS;
 
@@ -38,7 +37,7 @@ freq = fGHz;
 
 Lambda = 0.3/freq;
 
-ThWindRad = ThWind*DtoR;
+ThWindRad = deg2rad(ThWind);
 
 SigHeight = 0.115*SeaState^1.95;
 SigAlpha = 14.9*GrazAng*(SigHeight+0.25)/Lambda;
@@ -59,7 +58,7 @@ A4 = 1+0.35*Q;
 A = 2.63*A1/(A2*A3*A4);
 Gw = ((Vw+4.0)/15)^A;
 
-GrazAngRef = 0.1*DtoR;
+GrazAngRef = deg2rad(0.1);
 GrazAngTrans = asin(0.66*Lambda/SigHeight);
 %GrazAngTrans = asin(0.0632*Lambda/SigHeight); % DSTO Report
 

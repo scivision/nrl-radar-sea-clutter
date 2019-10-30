@@ -255,7 +255,7 @@ for iGrAng = 1:NGrAng
 
  hFig=figure(nFig-1); % Plot Hor Pol
 
- set(hFig,'Position',pos1);
+ %set(hFig,'Position',pos1);
 
  ht(end+1)=gca;
  ha(end+1)=gca;
@@ -334,19 +334,19 @@ for iGrAng = 1:NGrAng
 
 
  set(gca,'YLim',[minyaxis maxyaxis],'XLim',[minxaxis maxxaxis]);
- htx(end+1) = xlabel('Frequency - f (MHz) ');
+ htx(end+1) = xlabel('Frequency - f (GHz) ');
  hty(end+1) = ylabel('Reflectivity - \sigma_{HH}^o (dB)');
 
  %set(ha,'YLim',[minyaxis maxyaxis],'XLim',[minxaxis maxxaxis]);
- set(ha,'FontWeight','Bold');
- set(ha,'FontSize',FigFont-1);
- set(htx,'FontSize',FigFont);
- set(htx,'FontWeight','Bold');
- set(hty,'FontSize',FigFont);
- set(hty,'FontWeight','Bold');
- set(hl,'LineWidth',LineSize);
- set(hp,'LineWidth',CircSize);
- set(ha,'LineWidth',AxWidth);
+%  set(ha,'FontWeight','Bold');
+%  set(ha,'FontSize',FigFont-1);
+%  set(htx,'FontSize',FigFont);
+%  set(htx,'FontWeight','Bold');
+%  set(hty,'FontSize',FigFont);
+%  set(hty,'FontWeight','Bold');
+%  set(hl,'LineWidth',LineSize);
+%  set(hp,'LineWidth',CircSize);
+%  set(ha,'LineWidth',AxWidth);
  set(ha,'xtick',[0.5,.7,1.0,2.0,3.0,5.0,7.0,10.0,20.0,...
  30.0,40.0]);
  set(ha,'XLim',[0.5 40])
@@ -362,7 +362,7 @@ for iGrAng = 1:NGrAng
 
  ht(end+1)=gca;
  ha(end+1)=gca;
- set(gcf,'Position',pos1);
+ %set(gcf,'Position',pos1);
  set (ha(end),'PlotBoxAspectRatio',[1 .5 1])
 
  % Do all sea states for VV
@@ -395,7 +395,7 @@ for iGrAng = 1:NGrAng
 
  NOWColorV=ColsMat(SeaSt+1,:);
 
- hl(end+1) = semilogx(freq,SigmaVV,'LineWidth',7);
+ hl(end+1) = semilogx(freq,SigmaVV); %,'LineWidth',7);
  set(hl(end),'Color',ColsMat(SeaSt+1,:));
  hold on
  end
@@ -407,7 +407,7 @@ for iGrAng = 1:NGrAng
  % Plot measured values from Nathanson
  for ii=1:length(Freq_Nath)
  if Measured_SigmaVV(SS_Plus1,ii) ~= 0
- hp(end+1) = semilogx(Freq_Nath(ii),Measured_SigmaVV(SS_Plus1,ii),'o','LineWidth',CircSize);
+ hp(end+1) = semilogx(Freq_Nath(ii),Measured_SigmaVV(SS_Plus1,ii),'o'); %,'LineWidth',CircSize);
  %htemp=semilogx(Freq_Nath(ii),Measured_SigmaVV(SS_Plus1,ii),'-','LineWidth',1);
  set(hp(end),'Color',ColsMat(SeaSt+1,:));
  hold on
@@ -437,7 +437,7 @@ for iGrAng = 1:NGrAng
  grid on;
 
  set(gca,'YLim',[minyaxis maxyaxis],'XLim',[minxaxis maxxaxis]);
- htx(end+1) = xlabel('Frequency - f (MHz) ');
+ htx(end+1) = xlabel('Frequency - f (GHz) ');
  hty(end+1) = ylabel('Reflectivity - \sigma_{VV}^o (dB)');
  %title('DOPPLER ESTIMATION','FontSize',20,'FontWeight','bold');
 
@@ -445,15 +445,15 @@ for iGrAng = 1:NGrAng
  grid on;
 
  %set(ha,'YLim',[minyaxis maxyaxis],'XLim',[minxaxis maxxaxis]);
- set(ha,'FontWeight','Bold');
- set(ha,'FontSize',FigFont-1);
- set(htx,'FontSize',FigFont);
- set(htx,'FontWeight','Bold');
- set(hty,'FontSize',FigFont);
- set(hty,'FontWeight','Bold');
- set(hl,'LineWidth',LineSize);
- set(hp,'LineWidth',CircSize);
- set(ha,'LineWidth',AxWidth);
+%  set(ha,'FontWeight','Bold');
+%  set(ha,'FontSize',FigFont-1);
+%  set(htx,'FontSize',FigFont);
+%  set(htx,'FontWeight','Bold');
+%  set(hty,'FontSize',FigFont);
+%  set(hty,'FontWeight','Bold');
+%  set(hl,'LineWidth',LineSize);
+%  set(hp,'LineWidth',CircSize);
+%  set(ha,'LineWidth',AxWidth);
  set(ha,'xtick',[0.5,.7,1.0,2.0,3.0,5.0,7.0,10.0,20.0,...
  30.0,40.0]);
  set(ha,'XLim',[0.5 40])

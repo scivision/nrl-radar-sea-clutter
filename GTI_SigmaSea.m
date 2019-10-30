@@ -25,9 +25,8 @@ function SigZ=GTI_SigmaSea(fGHz,SS,Pol,Psi,ThWind)
 
 % Constants and conversions
 c = 0.2997924562; % Speed of Light in Giga meters per second
-DtoR = pi/180;
-GrazAng = Psi*DtoR;
-phi_rad = ThWind*DtoR;
+GrazAng = deg2rad(Psi);
+phi_rad = deg2rad(ThWind);
 Vw = 2.15*((SeaState+0)^1.04);
 hav = 4.52*(10.0^(-3.0))*(Vw^(2.5));
 
@@ -60,7 +59,7 @@ if SeaState>0
  end
  SigZ = sigmaVV;
  else
- disp('No valid polarization in SigmaSeaGTI')
+ error('No valid polarization in SigmaSeaGTI')
  end
 
  elseif fGHz > 12
@@ -83,7 +82,7 @@ if SeaState>0
  elseif Pol == 'V'
  SigZ = sigmaVV;
  else
- disp('No valid polarization in SigmaSeaGTI')
+ error('No valid polarization in SigmaSeaGTI')
  end
 
  end

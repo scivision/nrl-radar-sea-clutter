@@ -29,8 +29,7 @@ end
 
 % Conversions
 
-DtoR = pi()/180;
-GrazAng = Psi*DtoR;
+GrazAng = deg2rad(Psi);
 
 SeaState = SS;
 
@@ -49,7 +48,7 @@ hWave = 0.08*SeaState^2;
 
 % Grazing Angle Adjustment
 % ========================
-GrazAngRef = 0.1*DtoR;
+GrazAngRef = deg2rad(0.1);
 GrazAngTrans = asin(0.66*Lambda/SigHeight);
 %GrazAngTrans = asin(0.0632*Lambda/SigHeight); % DSTO Report
 
@@ -86,8 +85,7 @@ if Pol=='H'
 elseif Pol == 'V'
  KPol = 0;
 else
- disp('ERROR - Incorrect Polarization Specified')
- exit
+ error('Incorrect Polarization Specified')
 end
 
 % Wind Direction Adjustment
