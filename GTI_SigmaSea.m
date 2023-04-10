@@ -1,4 +1,4 @@
-function SigZ=GTI_SigmaSea(fGHz,SS,Pol,Psi,ThWind)
+function SigZ=GTI_SigmaSea(fGHz,Pol,Psi,ThWind)
 
 % This function implements the sea clutter reflectivity model
 % described in Horst, Dyer, and Tuley, Radar sea clutter model.

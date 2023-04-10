@@ -5,9 +5,7 @@
 % Average absolute error to 60 deg: 2.64 Hor, 2.54 V
 %Author: Rashmi Mital
 %Date: 11/30/2007
-clc;
-clear all;
-close all;
+clear
 %DEFINE CONSTANTS
 c = 2.997924562e8; %Speed of Light
 % Define INPUTS

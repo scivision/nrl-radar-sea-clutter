@@ -1,4 +1,4 @@
-function SigZ = NRL_SigmaSea(fGHz,SS,Pol,Psi,ThWind)
+function SigZ = NRL_SigmaSea(fGHz,SS,Pol,Psi)
 % Vilhelm Gregers-Hansen, Naval Research Laboratory
 % 5 May 2010
 % SigmaSea computes reflectivity coefficient for sea clutter in dB

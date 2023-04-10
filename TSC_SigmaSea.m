@@ -58,8 +58,8 @@ A4 = 1+0.35*Q;
 A = 2.63*A1/(A2*A3*A4);
 Gw = ((Vw+4.0)/15)^A;
 
-GrazAngRef = deg2rad(0.1);
-GrazAngTrans = asin(0.66*Lambda/SigHeight);
+% GrazAngRef = deg2rad(0.1);
+% GrazAngTrans = asin(0.66*Lambda/SigHeight);
 %GrazAngTrans = asin(0.0632*Lambda/SigHeight); % DSTO Report
 
 % Aspect Factor Gu - Special case of 45 degrees ignored
